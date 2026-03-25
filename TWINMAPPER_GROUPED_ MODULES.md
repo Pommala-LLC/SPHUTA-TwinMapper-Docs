@@ -1,7 +1,7 @@
 # SPHUTA - TwinMapper — Grouped Modules for Development
 
-SPHUTA — Enterprise Integration Platform
-TwinMapper — Compile-time-first, schema-driven code generation and mapping framework
+> **SPHUTA** — Enterprise Integration Platform  
+> **TwinMapper** — Compile-time-first, schema-driven code generation and mapping framework
 
 **Overall Progress:** 🟢🟢🟢⚪⚪⚪⚪⚪⚪⚪ 3 of 10 phases complete (30%)
 
