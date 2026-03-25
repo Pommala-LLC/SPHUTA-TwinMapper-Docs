@@ -46,35 +46,35 @@ TwinMapper solves both through a single compile-time-first platform with a Sprin
                     ║               │                          ║
                     ║               ▼                          ║
                     ║   ┌──────────────────────────┐           ║
-                    ║   │     Format Readers        │           ║
-                    ║   │  yaml · json · bpmn       │           ║
+                    ║   │     Format Readers        │          ║
+                    ║   │  yaml · json · bpmn       │          ║
                     ║   └────────────┬─────────────┘           ║
-                    ║                ▼                          ║
+                    ║                ▼                         ║
                     ║   ┌──────────────────────────┐           ║
                     ║   │   DefinitionSet          │           ║
-                    ║   │   (Canonical Meta-Model)  │           ║
+                    ║   │   (Canonical Meta-Model)  │          ║
                     ║   └────────────┬─────────────┘           ║
-                    ║                ▼                          ║
+                    ║                ▼                         ║
                     ║   ┌──────────────────────────┐           ║
-                    ║   │   twinmapper-codegen      │           ║
-                    ║   │   Generated Artifacts     │           ║
+                    ║   │   twinmapper-codegen      │          ║
+                    ║   │   Generated Artifacts     │          ║
                     ║   └────────────┬─────────────┘           ║
                     ╠════════════════╪═════════════════════════╣
                     ║                ▼  RUNTIME PLATFORM       ║
                     ║   ┌──────────────────────────┐           ║
-                    ║   │   twinmapper-runtime      │           ║
-                    ║   │   (Shared Contracts)      │           ║
+                    ║   │   twinmapper-runtime      │          ║
+                    ║   │   (Shared Contracts)      │          ║
                     ║   └──────┬───────────┬───────┘           ║
-                    ║          ▼           ▼                    ║
+                    ║          ▼           ▼                   ║
                     ║   ┌────────────┐ ┌──────────────┐        ║
                     ║   │  binding   │→│  objectmap   │        ║
                     ║   │ NodeCursor │ │ ConversionSvc│        ║
                     ║   └──────┬─────┘ └──────┬───────┘        ║
                     ║          └──────┬───────┘                ║
-                    ║                 ▼                         ║
+                    ║                 ▼                        ║
                     ║   ┌──────────────────────────┐           ║
-                    ║   │   twinmapper-validation   │           ║
-                    ║   │   ValidationReport        │           ║
+                    ║   │   twinmapper-validation   │          ║
+                    ║   │   ValidationReport        │          ║
                     ║   └──────────────────────────┘           ║
                     ╚══════════════════════════════════════════╝
 ```
