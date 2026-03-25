@@ -1,7 +1,8 @@
-# SPHUTA - TwinMapper — Phase 1 Foundation Specification
+# SPHUTA TwinMapper — Phase 1 Foundation Specification
 
 **Version:** Final Lock  
-**Platform:** SPHUTA  
+**Platform:** SPHUTA — Enterprise Integration Platform  
+**Component:** TwinMapper — Compile-time-first, schema-driven code generation and mapping framework  
 **Baseline:** Java 21 / Spring Framework 7.x / Spring Boot 4.x  
 
 ---
