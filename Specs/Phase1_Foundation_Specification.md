@@ -1,4 +1,4 @@
-# SPHUTA TwinMapper — Phase 1 Foundation Specification
+# SPHUTA - TwinMapper — Phase 1 Foundation Specification
 
 **Version:** Final Lock  
 **Platform:** SPHUTA — Enterprise Integration Platform  
