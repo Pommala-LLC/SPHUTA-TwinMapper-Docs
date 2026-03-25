@@ -155,10 +155,10 @@ Not part of the current implementation baseline. May be addressed in future rele
 
 | Item | Bucket | Module / Home | Default | Activation | Notes |
 |---|---|---|---|---|---|
-| Union/discriminator-capable types | Deferred from V1 | Future | N/A | Later phase | Deferred until base DSL, codegen, and binder runtime are stable |
-| JSON-based object-mapping DSL | Deferred from V1 | Future | N/A | Later phase | YAML DSL is the only mapping DSL in V1 |
-| Arbitrary additional definition DSL formats | Deferred from V1 | Future | N/A | Later phase | New formats addable via SPI in future releases |
-| Annotation-first architecture | Deferred from V1 | Future | N/A | Later phase | Annotations remain optional convenience only in V1 |
+| Union/discriminator-capable types | Roadmap Beyond V1 | Future | N/A | Later phase | Deferred until base DSL, codegen, and binder runtime are stable |
+| JSON-based object-mapping DSL | Roadmap Beyond V1 | Future | N/A | Later phase | YAML DSL is the only mapping DSL in V1 |
+| Arbitrary additional definition DSL formats | Roadmap Beyond V1 | Future | N/A | Later phase | New formats addable via SPI in future releases |
+| Annotation-first architecture | Roadmap Beyond V1 | Future | N/A | Later phase | Annotations remain optional convenience only in V1 |
 
 ---
 
@@ -172,4 +172,4 @@ Not part of the current implementation baseline. May be addressed in future rele
 | Open Decision | Unresolved implementation choices; not features; must be resolved before the relevant module is implemented |
 | Hard Non-Goal | Explicitly excluded from all implementation in any form |
 | External | Outside TwinMapper; enabled by SPIs but owned and built separately |
-| Deferred from V1 | Not in scope for current release; may be addressed in future phases |
+| Roadmap Beyond V1 | Not in scope for current release; may be addressed in future phases |
