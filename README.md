@@ -2,6 +2,8 @@
 
 TwinMapper is a compile-time-first, schema-driven code generation and mapping platform for Java. It generates strongly typed DTOs, enums, binders, validators, metadata, and typed object mappers from fixed YAML, JSON, and BPMN definitions. It provides runtime document binding and typed layer-to-layer object mapping without reflection-heavy inference or heuristic mapping as the core behavior.
 
+TwinMapper is built on Spring ecosystem defaults and integrates naturally with Spring Boot, Spring Validation, Spring Conversion, and Spring configuration patterns. Rather than assembling multiple external tools, TwinMapper provides a unified Spring-first platform for definition-driven binding, object mapping, validation, and code generation. Its closest direct competitors are MapStruct and ModelMapper.
+
 ---
 
 ## What TwinMapper solves
@@ -18,10 +20,43 @@ TwinMapper solves both through a single compile-time-first platform with a Sprin
 ## Two engines
 
 ### Document Engine
+
 Reads fixed YAML, JSON, and BPMN definitions at build time. Generates DTOs, enums, binders, validators, registries, and metadata. At runtime, binds actual YAML, JSON, and BPMN XML documents into generated DTOs using a `NodeCursor` abstraction. No reflection at binding time.
 
 ### Object Engine
+
 Generates typed Java-to-Java mappers for layer-crossing flows. Supports entity↔domain, domain↔DTO, DTO↔entity, entity↔projection, request/command↔domain, and domain↔event/view/response. Three mapper modes: CREATE, UPDATE, and PATCH.
+
+---
+
+## How TwinMapper compares
+
+### Direct competitors
+
+| Tool | What it does | What TwinMapper adds |
+|---|---|---|
+| **MapStruct** | Compile-time generated object mappers from annotated interfaces | All of MapStruct's object mapping, plus document binding, schema-driven DTO generation, BPMN support, and a YAML-first definition model. MapStruct is the quality benchmark for TwinMapper's object engine. |
+| **ModelMapper** | Runtime reflection and convention-based object mapping | TwinMapper is the architectural opposite: generated at compile time, no heuristic guessing, explicit definitions over conventions, fails loudly on ambiguity. |
+
+### Replacement targets
+
+These are tools that TwinMapper makes unnecessary for its target use cases. They are not direct competitors — they are tools handling separate concerns that TwinMapper unifies.
+
+| Tool | Replaced by |
+|---|---|
+| **jsonschema2pojo** | TwinMapper's Document Engine generates DTOs from YAML/JSON definitions with full Spring-native output and no Jackson annotation coupling |
+| **OpenAPI Generator** | TwinMapper's codegen pipeline for DTO and binder generation from structured definitions — scoped to this use case, not OpenAPI Generator's full client/server generation remit |
+| **Camunda BPMN tooling** | TwinMapper's `twinmapper-format-bpmn` owns BPMN parsing and binding via JDK StAX with no vendor dependency |
+
+### Supporting integration technology
+
+| Tool | Relationship |
+|---|---|
+| **Apache Avro** | A wire format and schema registry concern at a different layer. TwinMapper operates at the Java application layer. Avro is a potential integration point, not a competitor. |
+
+### Legacy mapping frameworks
+
+Dozer and Orika are older reflection-based mappers still present in legacy codebases. See `migration-guide.md` for migration paths away from both.
 
 ---
 
@@ -30,7 +65,7 @@ Generates typed Java-to-Java mappers for layer-crossing flows. Supports entity�
 The baseline product. Everything here is present by default.
 
 - **Compile-time-first design** — DTOs, binders, validators, and mappers are generated at build time from fixed definitions. Nothing is inferred at runtime.
-- **Document binding engine** — Binds YAML, JSON, and BPMN XML documents into generated DTOs at runtime using format-specific parsers and a NodeCursor abstraction.
+- **Document binding engine** — Binds YAML, JSON, and BPMN XML documents into generated DTOs at runtime using format-specific parsers and a `NodeCursor` abstraction.
 - **Typed object mapping engine** — Generates create, update, patch, and inverse mappers for typed Java layer-to-layer mapping flows.
 - **Code generation** — Generates DTOs, enums, binders, validators, registries, metadata descriptors, and object mappers from the internal definition model.
 - **YAML, JSON, and BPMN support** — Three first-class supported formats for both definitions and runtime documents.
@@ -86,6 +121,7 @@ Non-default capabilities. All are explicit opt-in, property-gated, default `fals
 - No runtime-first architecture
 - No domain-specific semantics in the core platform
 - No customer-specific domain packs (those are external extensions built using TwinMapper SPIs)
+- Not a Micronaut alternative — TwinMapper is Spring-first and does not target the Micronaut ecosystem
 
 ---
 
@@ -113,6 +149,37 @@ TwinMapper is designed to feel native in a Spring Boot application.
 | Format | `twinmapper-format-json`, `twinmapper-format-yaml`, `twinmapper-format-bpmn` |
 | Tooling | `twinmapper-gradle-plugin`, `twinmapper-maven-plugin`, `twinmapper-cli` |
 | Integration | `twinmapper-spring-boot-starter` |
+
+---
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| `architecture.md` | Two-engine architecture, module layer map, Spring integration model |
+| `modules.md` | Full module-by-module responsibility and tool reference |
+| `features.md` | Complete feature reference by category and classification |
+| `feature-matrix.md` | Locked feature matrix: Core, Additional, Optional, Hard Non-Goals |
+| `DevelopmentPhase.md` | Ten development phases with entry/exit conditions |
+| `authoring-guide.md` | YAML DSL reference for definitions and mappings |
+| `codegen-contract.md` | Generated artifact shapes, naming conventions, guarantees |
+| `configuration.md` | All configuration properties, Gradle/Maven plugin config |
+| `object-mapping-spec.md` | Object engine full specification |
+| `document-binding-spec.md` | Document engine full specification |
+| `validation-spec.md` | Validation model, constraints, Spring integration |
+| `bpmn-support-matrix.md` | Supported BPMN 2.0 element vocabulary |
+| `spi-extension-guide.md` | All SPI interfaces with registration examples |
+| `testing-strategy.md` | Internal and consumer testing guidance |
+| `security-model.md` | XXE, YAML safe construction, runtime security model |
+| `compatibility.md` | Platform requirements and version compatibility |
+| `decisions.md` | Architecture decision records |
+| `error-catalog.md` | All error codes, triggers, and resolution guidance |
+| `examples.md` | Ten end-to-end examples |
+| `glossary.md` | All terms defined |
+| `migration-guide.md` | Schema migration, MapStruct/ModelMapper/Dozer/Orika migration paths |
+| `faq.md` | Frequently asked questions |
+| `contributing.md` | Contribution guide and standards |
+| `release-strategy.md` | Versioning, release cadence, compatibility promise |
 
 ---
 
