@@ -1,14 +1,23 @@
-# SPHUTA - TwinMapper
+# SPHUTA — TwinMapper
 
-> **Compile-time-first, schema-driven code generation and mapping platform for Java**
+> **SPHUTA** — Enterprise Integration Platform  
+> **TwinMapper** — Compile-time-first, schema-driven code generation and mapping framework
 
 🟢🟢🟢⚪⚪⚪⚪⚪⚪⚪ **Development Progress:** 3 of 10 phases complete (30%)
 
 ---
 
-TwinMapper generates strongly typed DTOs, enums, binders, validators, metadata, and typed object mappers from fixed YAML, JSON, and BPMN definitions. It provides runtime document binding and typed layer-to-layer object mapping without reflection-heavy inference or heuristic mapping as the core behavior.
+TwinMapper is a compile-time-first, schema-driven code generation and mapping framework within the SPHUTA platform. It generates strongly typed DTOs, enums, binders, validators, metadata, and typed object mappers from fixed YAML, JSON, and BPMN definitions. It provides runtime document binding and typed layer-to-layer object mapping without reflection-heavy inference or heuristic mapping as the core behavior.
 
-Built on Spring ecosystem defaults — integrates naturally with Spring Boot, Spring Validation, Spring Conversion, and Spring configuration patterns. Rather than assembling multiple external tools, TwinMapper provides a unified Spring-first platform for definition-driven binding, object mapping, validation, and code generation. Its closest direct competitors are MapStruct and ModelMapper.
+Built on Spring ecosystem defaults — integrates naturally with Spring Boot, Spring Validation, Spring Conversion, and Spring configuration patterns. Rather than assembling multiple external tools, TwinMapper provides a unified Spring-first framework for definition-driven binding, object mapping, validation, and code generation. Its closest direct competitors are MapStruct and ModelMapper.
+
+| Property | Value |
+|----------|-------|
+| **Base package** | `net.sphuta.twinmapper` |
+| **Java** | 21+ |
+| **Spring Framework** | 7.x |
+| **Spring Boot** | 4.x |
+| **Null-safety** | JSpecify 1.0.0 (`@NullMarked`, `@Nullable` from `org.jspecify.annotations`) |
 
 ---
 
@@ -19,7 +28,7 @@ Most Java applications need two things that are painful to do consistently at sc
 1. **Binding structured documents** (YAML, JSON, BPMN) into typed Java models reliably and safely.
 2. **Mapping data between layers** — entity to domain, domain to DTO, request to command — without writing repetitive boilerplate or relying on runtime reflection.
 
-TwinMapper solves both through a single compile-time-first platform with a Spring-native integration model.
+TwinMapper solves both through a single compile-time-first framework with a Spring-native integration model.
 
 ---
 
@@ -305,6 +314,7 @@ TwinMapper is designed to feel native in a Spring Boot application.
 | Resource access | `ResourceLoader` + `PathMatchingResourcePatternResolver` | Classpath scanning |
 | Auto-configuration | `@AutoConfiguration` + `AutoConfiguration.imports` | Starter wiring |
 | Configuration | `TwinMapperProperties` via `@ConfigurationProperties(prefix = "twinmapper")` | Central config |
+| Null-safety | JSpecify 1.0.0 | `@NullMarked`, `@Nullable` from `org.jspecify.annotations` |
 
 ---
 
@@ -312,13 +322,14 @@ TwinMapper is designed to feel native in a Spring Boot application.
 
 | Dependency | Version | Purpose |
 |------------|---------|---------|
-| `spring-core` | 6.x+ | Utilities, ResourceLoader, ConversionService SPI |
-| `spring-context` | 6.x+ | Auto-configuration contracts |
-| `spring-boot` | 3.x+ | @ConfigurationProperties, AutoConfiguration |
-| `jackson-databind` | 2.14+ | JSON format support |
+| Java | 21+ | Records, sealed interfaces, pattern matching |
+| `spring-core` | 7.x | Utilities, ResourceLoader, ConversionService SPI |
+| `spring-context` | 7.x | Auto-configuration contracts |
+| `spring-boot` | 4.x | @ConfigurationProperties, AutoConfiguration |
+| `org.jspecify:jspecify` | 1.0.0 | Null-safety annotations (`@NullMarked`, `@Nullable`) |
+| `jackson-databind` | 2.18+ | JSON format support |
 | `snakeyaml` | 2.x | YAML format support (bundled in Spring Boot) |
 | JDK StAX | Built-in | BPMN XML parsing — no vendor dependency |
-| Java | 17+ | Records, sealed interfaces |
 
 > **No mandatory runtime dependency on:** Lombok, MapStruct, Micronaut, any BPMN library, or Hibernate Validator (optional).
 
